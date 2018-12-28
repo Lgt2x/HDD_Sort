@@ -1,34 +1,17 @@
 import os
+import glob
 
 pathInit = input()
 
-def Deplie(folder):
-    print(folder+":")
-
-    result = os.popen('ls ' + Escape(folder)).read()[:-1].split("\n")
-    if not result[0]: return
-    
-    for file in result:
-        if (IsFolder(Escape(folder+"/"+file))):
-            Deplie(folder+"/"+file)
+def Unfold(folder):
+    children = glob.glob(folder+"/*")
+    for child in children:
+        if os.path.isdir(child):
+            Unfold(child)
         else:
-            print(file,end=" ")
-            size = int(os.popen("stat -f%z "+Escape(folder+"/"+file)).read()[:-1])
-            sizeMo = round(size/10**6,1)
-            print(str(str(sizeMo)+" Mo"))
-
-    print()
-        
-
-def IsFolder(path):
-    return (os.system("cd "+path) == 0)
-
-def Escape(path):
+            file = os.path.splitext(os.path.basename(child))
+            if file[1] in [".avi",".mkv",".mp4"]:
+                print(file[0])
     
-    newPath = path.replace(" ","\\ ")
-    newPath = newPath.replace("(","\\(")
-    newPath = newPath.replace(")","\\)")
-    
-    return newPath
 
-Deplie(pathInit)
+Unfold(pathInit)
