@@ -1,5 +1,5 @@
 # HDD_Sort
-A collection of small Python3 scripts to list and sort movies stored in multiple hard drives
+A collection of small Python3 scripts to manage hard drives filled with movies (for my dad <3)
 
 Current functional scripts:
  - ListFiles.py : given a source folder and a dest folder, creates a .txt list containing the name of every movie stored in the source directory (.mp4, .avi, .mkv)
