@@ -1,13 +1,12 @@
 if __name__ == "__main__":
-    print()
     import sys
-
     try:
         scriptPath, hddPath, destPath, hddName = sys.argv
     except ValueError:
         print("\u001b[31mWrong number of arguments given\u001b[0m")
         print("Usage: python3 [Path to script] [Path to hard drive] [Destination of the list] [Name given to the list]")
     else:
+
         import os
         import glob
 
@@ -25,8 +24,9 @@ if __name__ == "__main__":
             return count
 
 
-        print("\u001b[1mComputing...\u001b[0m")
+        print("Computing...")
         with open(destPath + "/" + "list_" + hddName + ".csv", "w+") as movieList:
             counter = unfold(hddPath, hddName, movieList, 0)
+
         print("Done")
-        print(counter, " entries added to ", str(hddName) + ".csv")
+        print("\u001b[1m" + str(counter) + " entries added to " + str(hddName) + ".csv\u001b[0m")
