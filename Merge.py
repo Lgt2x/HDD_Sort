@@ -1,14 +1,13 @@
-if __name__ == "__main__":
-    import sys
+import sys
+import glob
 
+if __name__ == "__main__":
     try:
         folder = sys.argv[1]
     except ValueError:
         print("\u001b[31mWrong number of arguments given\u001b[0m")
         print("Usage: python3 Merge.py [Path to directory]")
     else:
-        import glob
-
         children = glob.glob(folder + "/*list_*.csv")
         allMovies = []
         print("Collecting...")
